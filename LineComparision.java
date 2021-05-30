@@ -23,6 +23,27 @@ public class LineComparision {
 			return false;
 	}
 
+	public static String calculateLengthToCompare(double x1, double x2, double y1, double y2, double p1, double p2,
+			double q1, double q2) {
+		String str = null;
+		double distance1, distance2;
+		distance1 = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+		distance2 = Math.sqrt(Math.pow((p1 - p2), 2) + Math.pow((q1 - q2), 2));
+
+		Double obj1 = new Double(distance1);
+		Double obj2 = new Double(distance2);
+		int compareValue = obj1.compareTo(obj2);
+
+		if (compareValue == 0)
+			str = " Both Line is Equal";
+		else if (compareValue > 0)
+			str = "Line1 is greater then Line2";
+		else if (compareValue < 0)
+			str = "Line1 is less then Line2";
+
+		return str;
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome To Line Comparision And Computation Problem:");
 		System.out.println("Calculate Line of Length::");
@@ -40,5 +61,8 @@ public class LineComparision {
 		System.out.println("Calculate Equality of two Lines::");
 		boolean checkLength = calculateLength(x1, x2, y1, y2, p1, p2, q1, q2);
 		System.out.println("Distance Of Line::" + checkLength);
+		System.out.println("Calculate two Line Length and check they equal,greater and less::");
+		String compareLine = calculateLengthToCompare(x1, x2, y1, y2, p1, p2, q1, q2);
+		System.out.println("Distance Of Line::" + compareLine);
 	}
 }
